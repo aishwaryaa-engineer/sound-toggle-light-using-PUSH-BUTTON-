@@ -1,0 +1,20 @@
+int ledPin = 8;
+int buttonPin = 7;
+bool ledState = false;
+bool lastbuttonstate = HIGH;
+int buttonstate = HIGH;
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
+}
+
+void loop() {
+  int buttonState = digitalRead(buttonPin);
+  
+  if (buttonState == LOW && lastbuttonstate == HIGH) {
+    ledState = !ledState;
+    digitalWrite(ledPin, ledState);
+    delay(50);
+  }
+  lastbuttonstate = buttonstate;
+}
